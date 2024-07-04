@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.contact.ContactFragment">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/heading"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            style="@style/myTextStyle"
+            android:text="@string/contact_us"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            style="@style/myCardStyle"
+            android:layout_margin="@dimen/side_margin"
+            android:layout_height="300dp">
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/webView"
+                    />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:textStyle="bold"
+            android:textSize="20sp"
+            style="@style/myTextStyle"
+            android:layout_gravity="center"
+            android:text="@string/company_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Mobile Phone"
+            android:id="@+id/mobile"
+            app:texts="91-77772222"
+            app:action="Call"
+            app:drawableTintEnable="false"
+            app:enables="false"
+            app:startIconDrawable="@drawable/ic_mobile"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Email Address"
+            android:id="@+id/email"
+            app:texts="help@call2owner.com"
+            app:enables="false"
+            app:drawableTintEnable="false"
+            app:action="Email"
+            app:startIconDrawable="@drawable/ic_mail"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Address"
+            android:id="@+id/address"
+            app:action="Map"
+            app:texts="Unit No. 388, 3rd Floor, Vegas Mall,  Sector 14 Dwarka,  Delhi, 110075"
+            app:enables="false"
+            app:drawableTintEnable="false"
+            app:startIconDrawable="@drawable/ic_location"
+            />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

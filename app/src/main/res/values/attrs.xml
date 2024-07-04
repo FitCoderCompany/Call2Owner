@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GradientTextView">
+        <attr name="startColor" format="color"/>
+        <attr name="endColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="TwoLinearText">
+        <attr name="title" format="string" />
+        <attr name="sub" format="string" />
+        <attr name="isBold" format="boolean" />
+        <attr name="subTextColor" format="color" />
+        <attr name="size" format="dimension" />
+        <attr name="isCenter" format="boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="OtpTextView">
+        <attr name="android:textColor"/>
+        <attr format="string" name="otp"/>
+        <attr format="boolean" name="hide_otp"/>
+        <attr format="boolean" name="enable"/>
+        <attr format="reference" name="hide_otp_drawable"/>
+        <attr format="integer" name="length"/>
+        <attr format="dimension" name="width"/>
+        <attr format="dimension" name="height"/>
+        <attr format="dimension" name="box_margin"/>
+        <attr format="dimension" name="box_margin_left"/>
+        <attr format="dimension" name="box_margin_right"/>
+        <attr format="dimension" name="box_margin_top"/>
+        <attr format="dimension" name="box_margin_bottom"/>
+        <attr format="dimension" name="bar_height"/>
+        <attr format="boolean" name="bar_enabled"/>
+        <attr format="reference" name="otp_box_background"/>
+        <attr format="reference" name="otp_box_background_active"/>
+        <attr format="reference" name="otp_box_background_inactive"/>
+        <attr format="reference" name="otp_box_background_success"/>
+        <attr format="reference" name="otp_box_background_error"/>
+        <attr format="dimension" name="bar_margin"/>
+        <attr format="dimension" name="bar_margin_bottom"/>
+        <attr format="dimension" name="bar_margin_right"/>
+        <attr format="dimension" name="bar_margin_left"/>
+        <attr format="dimension" name="bar_margin_top"/>
+        <attr format="dimension" name="otp_text_size"/>
+        <attr format="color" name="bar_active_color"/>
+        <attr format="color" name="bar_inactive_color"/>
+        <attr format="color" name="bar_error_color"/>
+        <attr format="color" name="bar_success_color"/>
+        <attr format="string" name="text_typeface"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgressIndicator">
+        <attr name="progressColor" format="color" />
+        <attr name="progressBackgroundColor" format="color" />
+        <attr name="progressStrokeWidth" format="dimension" />
+        <attr name="progressBackgroundStrokeWidth" format="dimension" />
+
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+
+        <attr name="formattingPattern" format="string|reference" />
+
+        <attr name="drawDot" format="boolean" />
+        <attr name="dotColor" format="color" />
+        <attr name="text" format="string" />
+        <attr name="dotWidth" format="dimension" />
+
+        <attr name="startAngle" format="integer|reference" />
+
+        <attr name="direction" format="enum">
+            <enum name="clockwise" value="0" />
+            <enum name="counterclockwise" value="1" />
+        </attr>
+
+        <attr name="progressCap" format="enum">
+            <enum name="round" value="0" />
+            <enum name="butt" value="1" />
+        </attr>
+
+        <attr name="enableProgressAnimation" format="boolean" />
+
+        <attr name="fillBackground" format="boolean" />
+
+        <attr name="gradientEndColor" format="color|reference"/>
+        <attr name="gradientType" format="enum">
+            <enum name="no_gradient" value="0"/>
+            <enum name="linear" value="1"/>
+            <enum name="radial" value="2"/>
+            <enum name="sweep" value="3"/>
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="CropImageView">
+        <attr name="cropGuidelines">
+            <enum name="off" value="0"/>
+            <enum name="onTouch" value="1"/>
+            <enum name="on" value="2"/>
+        </attr>
+        <attr name="cropScaleType">
+            <enum name="fitCenter" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="centerCrop" value="2"/>
+            <enum name="centerInside" value="3"/>
+        </attr>
+        <attr name="cropShape">
+            <enum name="rectangle" value="0"/>
+            <enum name="oval" value="1"/>
+        </attr>
+        <attr name="cropAutoZoomEnabled" format="boolean"/>
+        <attr name="cropMaxZoom" format="integer"/>
+        <attr name="cropMultiTouchEnabled" format="boolean"/>
+        <attr name="cropFixAspectRatio" format="boolean"/>
+        <attr name="cropAspectRatioX" format="integer"/>
+        <attr name="cropAspectRatioY" format="integer"/>
+        <attr name="cropInitialCropWindowPaddingRatio" format="float"/>
+        <attr name="cropBorderLineThickness" format="dimension"/>
+        <attr name="cropBorderLineColor" format="color"/>
+        <attr name="cropBorderCornerThickness" format="dimension"/>
+        <attr name="cropBorderCornerOffset" format="dimension"/>
+        <attr name="cropBorderCornerLength" format="dimension"/>
+        <attr name="cropBorderCornerColor" format="color"/>
+        <attr name="cropGuidelinesThickness" format="dimension"/>
+        <attr name="cropGuidelinesColor" format="color"/>
+        <attr name="cropBackgroundColor" format="color"/>
+        <attr name="cropSnapRadius" format="dimension"/>
+        <attr name="cropTouchRadius" format="dimension"/>
+        <attr name="cropSaveBitmapToInstanceState" format="boolean"/>
+        <attr name="cropShowCropOverlay" format="boolean"/>
+        <attr name="cropShowProgressBar" format="boolean"/>
+        <attr name="cropMinCropWindowWidth" format="dimension"/>
+        <attr name="cropMinCropWindowHeight" format="dimension"/>
+        <attr name="cropMinCropResultWidthPX" format="float"/>
+        <attr name="cropMinCropResultHeightPX" format="float"/>
+        <attr name="cropMaxCropResultWidthPX" format="float"/>
+        <attr name="cropMaxCropResultHeightPX" format="float"/>
+        <attr name="cropFlipHorizontally" format="boolean"/>
+        <attr name="cropFlipVertically" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="autofillHints" format="string|reference" />
+        <attr name="texts" format="string"  />
+        <attr name="action" format="string"  />
+        <attr name="error" format="string"  />
+        <attr name="hint" format="string" />
+        <attr name="maxLength" format="integer" min="0" />
+        <attr format="boolean" name="passwordToggleEnabled"/>
+        <attr format="boolean" name="onlyClick"/>
+        <attr format="boolean" name="enables"/>
+        <attr format="boolean" name="editableIcon"/>
+        <attr format="boolean" name="drawableTintEnable"/>
+        <attr format="boolean" name="textAllCaps"/>
+        <attr name="startIconDrawable" format="reference"/>
+        <attr name="digits" format="string" />
+        <attr name="inputType">
+            <flag name="none" value="0x00000000" />
+            <flag name="text" value="0x00000001" />
+            <flag name="textCapCharacters" value="0x00001001" />
+            <flag name="textCapWords" value="0x00002001" />
+            <flag name="textCapSentences" value="0x00004001" />
+            <flag name="textAutoCorrect" value="0x00008001" />
+            <flag name="textAutoComplete" value="0x00010001" />
+            <flag name="textMultiLine" value="0x00020001" />
+            <flag name="textImeMultiLine" value="0x00040001" />
+            <flag name="textNoSuggestions" value="0x00080001" />
+            <flag name="textEnableTextConversionSuggestions" value="0x00100001" />
+            <flag name="textUri" value="0x00000011" />
+            <flag name="textEmailAddress" value="0x00000021" />
+            <flag name="textEmailSubject" value="0x00000031" />
+            <flag name="textShortMessage" value="0x00000041" />
+            <flag name="textLongMessage" value="0x00000051" />
+            <flag name="textPersonName" value="0x00000061" />
+            <flag name="textPostalAddress" value="0x00000071" />
+            <flag name="textPassword" value="0x00000081" />
+            <flag name="textVisiblePassword" value="0x00000091" />
+            <flag name="textWebEditText" value="0x000000a1" />
+            <flag name="textFilter" value="0x000000b1" />
+            <flag name="textPhonetic" value="0x000000c1" />
+            <flag name="textWebEmailAddress" value="0x000000d1" />
+            <flag name="textWebPassword" value="0x000000e1" />
+            <flag name="number" value="0x00000002" />
+            <flag name="numberSigned" value="0x00001002" />
+            <flag name="numberDecimal" value="0x00002002" />
+            <flag name="numberPassword" value="0x00000012" />
+            <flag name="phone" value="0x00000003" />
+            <flag name="datetime" value="0x00000004" />
+            <flag name="date" value="0x00000014" />
+            <flag name="time" value="0x00000024" />
+        </attr>
+    </declare-styleable>
+
+</resources>

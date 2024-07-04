@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" 
+        app:lottie_loop="false"
+        app:lottie_autoPlay="true"
+        android:id="@+id/icon"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/myTextStyle"
+        android:paddingVertical="@dimen/side_margin"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:id="@+id/title"
+        android:elevation="5dp"
+        android:textStyle="bold"
+        android:translationZ="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/myTextStyle"
+        android:paddingVertical="@dimen/side_margin"
+        android:layout_gravity="center"
+        android:textStyle="normal"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:padding="@dimen/side_margin"
+        android:layout_margin="@dimen/side_margin"
+        android:id="@+id/message"
+        android:elevation="5dp"
+        android:translationZ="5dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/md_theme_error"
+        android:textSize="14sp"
+        tools:text="Error"
+        android:layout_gravity="center"
+        android:id="@+id/error"
+        android:visibility="gone"
+        android:layout_margin="@dimen/side_margin"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ok"
+            android:elevation="5dp"
+            android:translationZ="5dp"
+            android:text="@string/ok"
+            android:background="@drawable/btn_background"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="8dp"  />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:elevation="5dp"
+            android:translationZ="5dp"
+            android:background="@drawable/btn_background"
+            android:textStyle="bold"
+            android:backgroundTint="@color/grey"
+            android:id="@+id/cancel"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="8dp"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+</LinearLayout>

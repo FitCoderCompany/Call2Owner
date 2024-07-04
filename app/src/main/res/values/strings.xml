@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Call 2 Owner</string>
+    <string name="provider_name" translatable="false">.wltpe.Provider</string>
+    <string name="fb_provider_name" translatable="false">com.facebook.app.FacebookContentProvider1208538897165737</string>
+
+    <string name="facebook_app_id">1208538897165737</string>
+    <string name="facebook_client_token">b9848b4ba5fdf4254e939de79e15b7ec</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_contact">Contact</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
+    <string name="profile">Profile</string>
+    <string name="ok">OK</string>
+    <string name="something_wrong">Something Went Wrong</string>
+
+    <string name="no_internet_msg">Slow or no internet connection\ncheck your internet settings</string>
+    <string name="ooops">Ooops!</string>
+    <string name="try_again">Try Again</string>
+    <string name="settings">Settings</string>
+    <string name="buy_ticket_heading">Vehicle Parking Tag Pack Of 2</string>
+    <string name="buy_msg">Call2onwer Vehicle QR code pack of 2. It is a two-dimensional qrcode that can be scanned using a smartphone or QR code reader to quickly access the vehicle owner information. You can create a QR code for your vehicle, you can include your contact number and emergency contact number.</string>
+
+
+    <string name="crop_image">Crop Image</string>
+    <string name="crop_image_menu_flip_horizontally">flip</string>
+    <string name="select_image">Select Image</string>
+    <string name="setting">Settings</string>
+    <string name="choose_where_to_find_the_image">Choose where to find the image</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="save">Save</string>
+    <string name="icon">Icon</string>
+    <string name="field_mandatory">Field Requeired</string>
+    <string name="cancel">Cancel</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_msg">You need to have Active Call2Owner tag, to be able to login.</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="send_otp">Send Otp</string>
+    <string name="otp_top_text">OTP has sent to 701161***</string>
+    <string name="resend_msg">Didn\'t Received OTP? Resend in : %1$d</string>
+    <string name="resend">Resent OTP</string>
+    <string name="invalid_otp">Invalid OTP</string>
+    <string name="otp_has_been_sent_to">OTP has been sent to %1$s</string>
+    <string name="view_details">View Details</string>
+    <string name="shop_now">Shop Now</string>
+    <string name="my_cart">My Cart</string>
+    <string name="sorry">Sorry</string>
+    <string name="no_items_in_cart">No Items in Cart</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="chooser">Choose App</string>
+    <string name="company_name">Yoke Payment India Pvt. Ltd.</string>
+
+</resources>

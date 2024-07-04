@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:id="@+id/noInternetImage"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="true"
+        android:layout_margin="@dimen/side_margin"
+        app:lottie_rawRes="@raw/no_internet"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/no_internet_msg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/side_margin"
+        android:text="@string/ooops"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/oops"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="@dimen/side_margin"
+        android:text="@string/try_again"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/closeApp"
+
+        />
+</LinearLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.cart.CartFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            style="@style/myTextStyle"
+            android:text="@string/profile"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="@dimen/extra_side_margin"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginBottom="0dp"
+            />
+
+
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fName"
+            app:enables="false"
+            app:hint="First Name"
+            app:startIconDrawable="@drawable/ic_profile"
+            />
+
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lName"
+            app:enables="false"
+            app:hint="Last Name"
+            app:startIconDrawable="@drawable/ic_profile"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/number"
+            app:enables="false"
+            app:hint="Phone Number"
+            app:drawableTintEnable="false"
+            app:startIconDrawable="@drawable/ic_mobile"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            app:enables="false"
+            app:hint="Email ID"
+            app:startIconDrawable="@drawable/ic_mail"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/address"
+            app:enables="false"
+            app:hint="Address"
+            app:drawableTintEnable="false"
+            app:startIconDrawable="@drawable/ic_location"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pinCode"
+            app:enables="false"
+            app:hint="Pin Code"
+            app:drawableTintEnable="false"
+            app:startIconDrawable="@drawable/ic_pin"
+            />
+
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/state"
+            app:enables="false"
+            app:hint="State"
+            app:startIconDrawable="@drawable/ic_state"
+            app:drawableTintEnable="false"
+            />
+        <com.call2owner.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/country"
+            app:enables="false"
+            app:hint="Country"
+            app:drawableTintEnable="false"
+            app:startIconDrawable="@drawable/ic_globe"
+            />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
