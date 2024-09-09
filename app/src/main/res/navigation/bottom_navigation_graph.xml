@@ -10,19 +10,16 @@
         android:name="com.call2owner.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/navigation_contact"
-        android:name="com.call2owner.ui.contact.ContactFragment"
-        android:label="@string/title_contact"
-        tools:layout="@layout/fragment_contact" />
-
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.call2owner.ui.cart.CartFragment"
         android:label="@string/title_cart"
         tools:layout="@layout/fragment_cart" />
-
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.call2owner.ui.history.HistoryFragment"
+        android:label="@string/order_history"
+        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.call2owner.ui.auth.ProfileFragment"

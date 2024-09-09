@@ -34,58 +34,7 @@ object Constant {
     const val login = "modal/login"
     const val product = "modal/products"
     const val banner = "modal/media"
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const val loginVerifyOtp = "api/v1/UserManager/customer/verify-otp/"
-    const val resendOtp = "api/v1/UserManager/customer/ResendOtp/"
-
-    const val generateToken = "api/v1/UserManager/GenerateToken/"
-
-    const val category = "api/v1/recharge/circle/service-category/get-all/"
-
-    const val updateFav = "api/v1/recharge/user/favorite/add/"
-
-    const val recommendedFav = "api/v1/recharge/user/favorite/get-all/"
-
-
-
-    const val serviceDetails = "rechargeRequest/v1/recharge/rechargeRequest/get-plan-info-detail/"
-
-    const val prepaidOperatorPlan = "rechargeRequest/v1/recharge/rechargeRequest/get-operator-plan-offer/"
-
-    const val history = "rechargeRequest/v1/recharge/rechargeRequest/get-all/"
-
-
-    const val prepaidRecharge="rechargeRequest/v1/recharge/rechargeRequest/initiate/"
-    const val cashbackAmount="rechargeRequest/v1/recharge/rechargeRequest/initiate-calculate-amount/"
-
-//    pg
-    const val pgInitiateUrl = "api/GatewayResponse/initiate/"
-
-//History
-
-
-
-//    Wallet
-
-    const val wallet="api/v1/recharge/user/wallet-balance/"
-
-    const val walletHistory="api/v1/recharge/user/wallet-history/"
-
-    const val getOrderIdForWallet="api/GatewayResponse/initiate-wallet/"
-
-    const val addWallet="/api/GatewayResponse/wallet-transacton/"
-
+    const val checkOut = "modal/checkout"
+    const val cardApi = "modal/cardApi"
 
 }

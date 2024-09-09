@@ -138,6 +138,13 @@
         <attr name="cropFlipVertically" format="boolean"/>
     </declare-styleable>
 
+
+    <declare-styleable name="Header">
+        <attr name="heading" format="string" />
+        <attr name="back" format="boolean" />
+        <attr name="actionSrc" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="CustomTextView">
         <attr name="autofillHints" format="string|reference" />
         <attr name="texts" format="string"  />

@@ -161,5 +161,14 @@ dependencies {
     implementation(libs.hilt.android)
 //    implementation(libs.androidx.room.common)
     kapt(libs.hilt.compiler)
+
+//    Qr code
+    implementation (libs.core)
+    implementation (libs.zxing.android.embedded)
+
+    implementation("com.google.mlkit:barcode-scanning:17.0.2")
+    implementation("androidx.camera:camera-camera2:1.0.0")
+    implementation("androidx.camera:camera-lifecycle:1.0.0")
+    implementation("androidx.camera:camera-view:1.0.0-alpha22")
 }
 

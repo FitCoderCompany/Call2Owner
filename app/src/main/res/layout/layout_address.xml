@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <com.call2owner.custom.Header
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:back="false"
+        app:heading="@string/confirm_your_details"
+        />
+
+    <TextView
+        style="@style/myTextStyle"
+        android:text="@string/place_your_order"
+        android:textSize="18sp"
+        />
+
+    <com.call2owner.custom.TwoLinearText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Items:"
+        app:sub="₹ 998.00"
+        android:id="@+id/price"
+        />
+
+    <com.call2owner.custom.TwoLinearText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Delivery:"
+        app:sub="₹ 0.00"
+        android:id="@+id/delivery"
+        />
+    <View style="@style/line"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        />
+    <com.call2owner.custom.TwoLinearText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Order Total:"
+        app:sub="₹ 998.00"
+        android:id="@+id/total"
+        />
+
+    <View style="@style/line" />
+
+
+    <TextView
+        style="@style/myTextStyle"
+        android:text="@string/paying_with"
+        android:textSize="18sp"
+        android:layout_marginBottom="0dp"
+        /> 
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cash_on_delivery"
+        android:checked="true"
+        android:buttonTintMode="multiply"
+        android:buttonTint="@color/colorPrimaryDark"
+        android:foregroundTint="@color/black"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/side_margin"
+        />
+
+    <View style="@style/line" />
+
+
+    <TextView
+        style="@style/myTextStyle"
+        android:text="@string/shipping_address"
+        android:textSize="18sp"
+        android:layout_marginBottom="0dp"
+        /> 
+
+    <TextView
+        android:layout_width="match_parent"
+        style="@style/myTextStyle"
+        android:id="@+id/profileAddress"
+        tools:text="Paharganj, New Delhi, India-110055"
+        />
+
+    <TextView
+        style="@style/myTextStyle"
+        android:id="@+id/changeAddress"
+        android:text="@string/change_address"
+        android:buttonTintMode="multiply"
+        android:textColor="@color/blue"
+        android:layout_margin="0dp"
+        android:paddingHorizontal="@dimen/side_margin"
+        android:paddingBottom="@dimen/side_margin"
+        />
+
+
+    <View style="@style/line" />
+
+
+    <TextView
+        style="@style/myTextStyle"
+        android:text="@string/arrival_date"
+        android:textSize="18sp"
+        android:layout_marginBottom="0dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        style="@style/myTextStyle"
+        android:id="@+id/arrivalDate"
+        android:textStyle="normal"
+        android:layout_marginVertical="0dp"
+        tools:text="in 3-4 Business Days"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Shipping"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:id="@+id/startShipping"
+        android:layout_margin="@dimen/side_margin"
+        />
+
+
+
+</LinearLayout>

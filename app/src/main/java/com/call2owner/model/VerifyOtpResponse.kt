@@ -43,6 +43,9 @@ data class VerifyOtpResponse(
         @SerializedName("ip_address")
         @Expose
         var ipAddress: String? = "",
+        @SerializedName("key")
+        @Expose
+        var key: String? = "",
         @SerializedName("lname")
         @Expose
         var lname: String? = "",

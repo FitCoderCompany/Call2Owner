@@ -1,5 +1,6 @@
 package com.call2owner.ui
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -39,6 +40,7 @@ open class BaseActivity:AppCompatActivity(),NetworkInterface {
     lateinit var myApiService: MyApi
 
     lateinit var context: Context
+    lateinit var activity: Activity
 
 
     private lateinit var connectivityManager: ConnectivityManager
@@ -49,7 +51,7 @@ open class BaseActivity:AppCompatActivity(),NetworkInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context = this
-
+        activity = this
         connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         networkCallback = NetworkCallbackImpl(this)
         @Suppress("DEPRECATION")

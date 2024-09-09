@@ -4,6 +4,7 @@ package com.call2owner.model
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 import com.google.gson.annotations.Expose
+import java.io.Serializable
 
 @Keep
 data class ProductResponse(
@@ -58,6 +59,6 @@ data class ProductResponse(
             @SerializedName("short_description")
             @Expose
             var shortDescription: String? = ""
-        )
+        ):Serializable
     }
 }

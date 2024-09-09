@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:foreground="?attr/selectableItemBackground"
     android:layout_height="match_parent"
     tools:context=".ui.cart.CartFragment">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         style="@style/myTextStyle"
+        android:id="@+id/title"
         android:text="@string/my_cart"
         android:gravity="center"
         android:textSize="16sp"
@@ -17,25 +20,63 @@
         android:layout_marginStart="@dimen/extra_side_margin"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        app:layout_constraintStart_toEndOf="@id/cartCount"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <ImageView
-        android:id="@+id/cartCount"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:id="@+id/cartIcon"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/my_cart"
         android:src="@drawable/ic_cart"
         android:adjustViewBounds="true"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/subTotal"
+        app:layout_constraintTop_toTopOf="@id/subTotal"
+        app:layout_constraintBottom_toBottomOf="@id/subTotal"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/myTextStyle"
+        android:id="@+id/itemCount"
+        android:text="0"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintTop_toTopOf="@id/cartIcon"
+        app:layout_constraintStart_toStartOf="@id/cartIcon"
+        app:layout_constraintEnd_toEndOf="@id/cartIcon"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        style="@style/myTextStyle"
+        android:id="@+id/subTotal"
+        android:text="@string/subtotal_0_00"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/extra_side_margin"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/side_margin"
-        app:tint="@color/colorPrimaryDark" />
+        />
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emptyLayout"
+        android:visibility="gone"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +87,7 @@
             android:id="@+id/emptyImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/no_items_in_cart"
             android:src="@drawable/empty_cart"
             android:adjustViewBounds="true"/>
 
@@ -69,12 +111,25 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_cart"
+        android:id="@+id/recyclerView"
+        android:layout_marginTop="50dp"
+        android:clipToPadding="true"
+        android:paddingBottom="60dp"
+        />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/shop_now"
+        tools:text="Proceed to Buy (2 items)"
+        android:textColor="@color/white"
+        android:id="@+id/proceed"
         android:textStyle="bold"
         android:textSize="16sp"
         android:layout_margin="@dimen/side_margin"

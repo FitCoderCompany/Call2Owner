@@ -6,32 +6,30 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.webkit.GeolocationPermissions
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.call2owner.R
-import com.call2owner.databinding.FragmentContactBinding
-import com.call2owner.ui.BaseFragment
+import com.call2owner.databinding.ActivityContactBinding
+import com.call2owner.ui.BaseActivity
 
-class ContactFragment : BaseFragment() {
+class ContactActivity : BaseActivity() {
+    private lateinit var binding: ActivityContactBinding
 
-    private lateinit var binding: FragmentContactBinding
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentContactBinding.inflate(layoutInflater)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityContactBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initView()
-        return binding.root
     }
 
     private fun initView() {
         binding.apply {
+            mobile.text="9177775555"
+            email.text="help@call2owner.com"
+            address.text="Unit No. 388, 3rd Floor, Vegas Mall,  Sector 14 Dwarka,  Delhi, 110075"
 
             loadWeb(webView)
             mobile.getActionBtn().setOnClickListener{
@@ -46,7 +44,6 @@ class ContactFragment : BaseFragment() {
                 openMap(lat,lang)
             }
         }
-
     }
 
     private fun openMap(lat: String, lang: String) {
@@ -62,7 +59,7 @@ class ContactFragment : BaseFragment() {
         try {
             var body: String? = null
             try {
-                body = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0).versionName
+                body =  packageManager.getPackageInfo( packageName, 0).versionName
                 body =
                     """
                             -----------------------------

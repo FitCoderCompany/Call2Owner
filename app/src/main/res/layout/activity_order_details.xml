@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.history.OrderDetailsActivity">
+
+    <com.call2owner.custom.Header
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:heading="@string/order_history"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        style="@style/myCardStyle"
+        android:id="@+id/shippingAddress"
+        app:cardBackgroundColor="@color/success_green"
+        android:layout_margin="@dimen/side_margin"
+        android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+
+                >
+
+                <TextView
+                    style="@style/myTextStyle"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/shipping_details"
+                    android:id="@+id/detailsTxt"
+                    android:textSize="18sp" />
+
+                <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Number" />
+
+                <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="E-Mail" />
+
+                <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Status" />
+
+                <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Order Date" />
+
+
+                <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/paymentMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Payment Method" />
+
+                <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/paymentStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Payment Status" />
+
+                <View style="@style/line" />
+
+
+                <TextView
+                    style="@style/myTextStyle"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/shipping_address"
+                    android:id="@+id/addressTxt"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/profileAddress"
+                    style="@style/myTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:textColor="@color/grey"
+                    tools:text="Paharganj, New Delhi, India-110055" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_order_details"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+</LinearLayout>

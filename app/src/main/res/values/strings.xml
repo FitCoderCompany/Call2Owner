@@ -19,7 +19,7 @@
     <string name="try_again">Try Again</string>
     <string name="settings">Settings</string>
     <string name="buy_ticket_heading">Vehicle Parking Tag Pack Of 2</string>
-    <string name="buy_msg">Call2onwer Vehicle QR code pack of 2. It is a two-dimensional qrcode that can be scanned using a smartphone or QR code reader to quickly access the vehicle owner information. You can create a QR code for your vehicle, you can include your contact number and emergency contact number.</string>
+    <string name="buy_msg">Call2owner Vehicle QR code pack of 2. It is a two-dimensional qrcode that can be scanned using a smartphone or QR code reader to quickly access the vehicle owner information. You can create a QR code for your vehicle, you can include your contact number and emergency contact number.</string>
 
 
     <string name="crop_image">Crop Image</string>
@@ -50,5 +50,69 @@
     <string name="contact_us">Contact Us</string>
     <string name="chooser">Choose App</string>
     <string name="company_name">Yoke Payment India Pvt. Ltd.</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="remove">Remove</string>
+    <string name="total_">Total: %1$s</string>
+    <string name="price_">Price: ₹ %1$s</string>
+    <string name="subtotal_">Subtotal: ₹ %1$s</string>
+    <string name="subtotal_0_00">Subtotal : ₹0.00</string>
+    <string name="proceed_to_buy_items_">Proceed to Buy (%1$s items)</string>
+    <string name="start_shopping">Start Shopping</string>
+    <string name="action">Button</string>
+    <string name="place_order">Place Order</string>
+    <string name="about_us">About Us</string>
+    <string name="faq_s">FAQ\'S</string>
+    <string name="how_to_use">How to Use</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="privacy">Privacy</string>
+    <string name="social_media">Social Media</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter (X)</string>
+    <string name="instagram">Instagram</string>
+    <string name="you_tube">YouTube</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="scan">Scan</string>
+    <string name="skip">Skip</string>
+    <string name="allow">Allow</string>
+
+    <string name="permission_required">Permission Required</string>
+    <string name="location_permission_message">Please allow location permission to verify your address</string>
+    <string name="camera_permission_message">Please allow camera permission to take pictures.</string>
+    <string name="bluetooth_permission_msg">Please allow Bluetooth permission to access Machine</string>
+
+    <string name="get_notified">Get Notified!</string>
+    <string name="notified_details">Stay in Touch…\nWhat\'s going in App!</string>
+
+    <string name="permission_contact_message">Permission Required to get contact Number.</string>
+    <string name="permission_nearby_message">Permission Required to connect printer.</string>
+
+    <string name="ask_later">Ask later</string>
+    <string name="location_msg_if_dont_allow">You Can Allow Permission in Setting</string>
+    <string name="permission_denied_msg">Permission Denied!</string>
+    <string name="permission_skipped">Permission Skipped</string>
+    <string name="mandatory_permission">Mandatory Permission</string>
+    <string name="for_security_reason_you_are_unable_to_use_the_app">For security reasons, you are not allowed to use the app, please try again after granting location permission.</string>
+    <string name="allow_permission">Allow Permission</string>
+    <string name="close_app">Close Application</string>
+    <string name="confirm_your_details">Confirm Your Details</string>
+    <string name="place_your_order">Place your order</string>
+    <string name="paying_with">Paying With</string>
+    <string name="cash_on_delivery">Cash On Delivery</string>
+    <string name="shipping_address">Shipping Address</string>
+    <string name="change_address">Change Address</string>
+    <string name="arrival_date">Arrival Date</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_history">Order History</string>
+    <string name="history">History</string>
+    <string name="reorder">Reorder</string>
+    <string name="ordered_on_">Ordered on : %1$s</string>
+    <string name="status_">Status: %1$s</string>
+    <string name="activate_card">Activate Card</string>
+    <string name="shipping_details">Shipping Details</string>
+    <string name="activate">Activate Card</string>
 
 </resources>

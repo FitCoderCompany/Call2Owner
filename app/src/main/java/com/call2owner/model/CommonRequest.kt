@@ -7,6 +7,12 @@ import com.google.gson.annotations.Expose
 
 @Keep
 data class CommonRequest(
+    @SerializedName("uid")
+    @Expose
+    var uid: String? = "",
+    @SerializedName("order_no")
+    @Expose
+    var orderNo: String? = "",
     @SerializedName("id")
     @Expose
     var id: String? = "",

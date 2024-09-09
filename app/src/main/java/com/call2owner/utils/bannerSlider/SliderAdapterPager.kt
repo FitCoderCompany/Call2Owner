@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.call2owner.databinding.ItemSliderImageBinding
+import com.call2owner.utils.MyUtil.log
 
 class SliderAdapterPager(
     var context: Context,
@@ -60,9 +61,11 @@ class SliderAdapterPager(
     private val autoScrollRunnable = object : Runnable {
         override fun run() {
             viewPager?.let {
-                val currentItem = it.currentItem
-                val nextItem = (currentItem + 1) % count
-                it.setCurrentItem(nextItem, true)
+                try{
+                    val currentItem = it.currentItem
+                    val nextItem = (currentItem + 1) % count
+                    it.setCurrentItem(nextItem, true)
+                }catch (e:Exception){e.log()}
                 handler.postDelayed(this, autoScrollInterval)
             }
         }

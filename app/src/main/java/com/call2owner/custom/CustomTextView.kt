@@ -64,8 +64,8 @@ class CustomTextView(context: Context, attrs: AttributeSet) : LinearLayout(conte
         setHideError()
         setDrawableTintEnabled(drawableTintEnable)
         setStartDrawable(d)
-        invalidate()
         setAuto(auto)
+        invalidate()
         requestLayout()
 
     }

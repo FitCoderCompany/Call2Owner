@@ -28,7 +28,6 @@ class SplashActivity : BaseActivity() {
 
     private fun initView() {
         binding.imageView.fadeIn()
-
         Handler(Looper.getMainLooper()).postDelayed({
             start(MainActivity::class.java)
             finish()

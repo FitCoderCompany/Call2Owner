@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.history.HistoryFragment">
+
+
+    <com.call2owner.custom.Header
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:heading="@string/order_history"
+        app:back="false"
+        />
+
+    <com.call2owner.custom.CustomTextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hint="Search within your orders"
+        app:startIconDrawable="@drawable/ic_search"
+        android:id="@+id/search"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/recyclerView"
+        tools:listitem="@layout/item_order_history"
+        android:visibility="gone"
+        />
+    <ImageView
+        android:id="@+id/noData"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/no_data"
+        android:layout_marginHorizontal="50dp"
+        />
+</LinearLayout>

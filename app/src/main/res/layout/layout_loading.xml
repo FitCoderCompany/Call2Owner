@@ -23,7 +23,7 @@
             app:lottie_autoPlay="true"
             android:layout_gravity="center"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/loading"
+            app:lottie_rawRes="@raw/car_loader"
             android:id="@+id/animation"
             app:lottie_speed="1.5"
             />

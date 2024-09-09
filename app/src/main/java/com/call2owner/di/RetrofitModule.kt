@@ -21,8 +21,8 @@ class RetrofitModule {
     fun provideOkHttpClient(  interceptor: TokenInterceptor): OkHttpClient {
         return OkHttpClient
             .Builder()
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
             .build()
     }

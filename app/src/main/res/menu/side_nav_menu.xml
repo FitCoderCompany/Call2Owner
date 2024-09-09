@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group>
+        <item android:title="@string/privacy">
+            <menu>
+                <item
+                    android:id="@+id/about"
+                    android:icon="@drawable/ic_about_us"
+                    android:title="@string/about_us"
+                    />
+                <item
+                    android:id="@+id/contact"
+                    android:icon="@drawable/ic_contact"
+                    android:title="@string/contact_us" />
+
+                <item
+                    android:id="@+id/faq"
+                    android:icon="@drawable/faqs"
+                    android:title="@string/faq_s" />
+                <item
+                    android:id="@+id/use"
+                    android:icon="@drawable/ic_use"
+                    android:title="@string/how_to_use" />
+                <item
+                    android:id="@+id/privacy"
+                    android:icon="@drawable/ic_privacy"
+                    android:title="@string/privacy_policy" />
+                <item
+                    android:id="@+id/terms"
+                    android:icon="@drawable/ic_terms"
+                    android:title="@string/terms_conditions" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/social_media">
+            <menu>
+                <item
+                    android:id="@+id/fb"
+                    android:icon="@drawable/ic_facebook"
+                    android:title="@string/facebook" />
+
+                <item
+                    android:id="@+id/x"
+                    android:icon="@drawable/ic_twitter"
+                    android:title="@string/twitter" />
+                    />
+                <item
+                    android:id="@+id/instagram"
+                    android:icon="@drawable/ic_insta"
+                    android:title="@string/instagram" />
+
+                <item
+                    android:id="@+id/youtube"
+                    android:icon="@drawable/ic_youtube"
+                    android:title="@string/you_tube" />
+                    />
+                <item
+                    android:id="@+id/linkedin"
+                    android:icon="@drawable/ic_linkedin"
+                    android:title="@string/linkedin" />
+                    />
+
+            </menu>
+
+        </item>
+    </group>
+
+
+</menu>

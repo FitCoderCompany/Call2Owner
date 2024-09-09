@@ -42,13 +42,6 @@ class UserData @Inject constructor(@ApplicationContext private val context: Cont
         set(v) {
             editor.putString("accessToken", v ?: "").apply()
         }
-    var phoneNumber: String
-        get() {
-            return sp.getString("phoneNumber", "") ?: ""
-        }
-        set(v) {
-            editor.putString("phoneNumber", v).apply()
-        }
 
     var pwd: String
         get() {
@@ -193,6 +186,10 @@ class UserData @Inject constructor(@ApplicationContext private val context: Cont
         get() = sp.getString("S_state", "") ?: ""
         set(value) = editor.putString("S_state", value).apply()
 
+    var cartID: String
+        get() = sp.getString("cartID", "") ?: ""
+        set(value) = editor.putString("cartID", value).apply()
+
 
     fun saveLoginData(data: VerifyOtpResponse.Data) {
         deviceToken = data.deviceToken ?: ""
@@ -202,6 +199,7 @@ class UserData @Inject constructor(@ApplicationContext private val context: Cont
         lname = data.lname ?: ""
         id = data.id ?: ""
         ipAddress = data.ipAddress ?: ""
+        cartID = data.key ?: ""
         mobile = data.mobile ?: ""
         oauthProvider = data.oauthProvider ?: ""
         oauthUid = data.oauthUid ?: ""
@@ -226,6 +224,7 @@ class UserData @Inject constructor(@ApplicationContext private val context: Cont
             fname = fname,
             id = id,
             ipAddress = ipAddress,
+            key = cartID,
             lname = lname,
             mobile = mobile,
             oauthProvider = oauthProvider,

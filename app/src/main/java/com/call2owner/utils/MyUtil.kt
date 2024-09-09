@@ -1,5 +1,7 @@
 package com.call2owner.utils
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ClipData
@@ -13,6 +15,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
@@ -53,23 +56,36 @@ object MyUtil {
         }
     }
     fun Context.showSnackBar(window: Window, msg: String?) {
-        val snackBar = Snackbar.make(
-            window.decorView,
-            msg ?: getString(R.string.something_wrong),
-            Snackbar.LENGTH_LONG
-        )
-        val v = snackBar.view
-        val params = v.layoutParams as FrameLayout.LayoutParams
+//        val customView = LayoutInflater.from(this).inflate(R.layout.layout_snackbar,null)
+//
+//        val snackBar = Snackbar.make(window.decorView, msg ?: getString(R.string.something_wrong), Snackbar.LENGTH_LONG)
+//
+//        val snackbarLayout = snackBar.view as Snackbar.SnackbarLayout
+//
+//        snackbarLayout.addView(customView, 0)
+//        snackBar.show()
 
-//            params.gravity = Gravity.TOP
-        params.setMargins(0, 0, 0, 100)
-        v.layoutParams = params
 
-        val textView = v.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-        textView.setTextColor(Color.BLACK)
 
-        v.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        snackBar.show()
+
+        val snackbar = Snackbar.make(window.decorView, msg?:"Something went wrong", Snackbar.LENGTH_LONG)
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.colorPrimary))
+        snackbar.setTextColor(Color.BLACK)
+        snackbar.show()
+
+//        val v = snackBar.view
+//        val params = v.layoutParams as FrameLayout.LayoutParams
+//
+//        params.gravity = Gravity.TOP
+//        params.setMargins(0, 0, 0, 100)
+//        v.layoutParams = params
+//
+//        val textView = v.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+//        textView.setTextColor(Color.BLACK)
+//
+//        v.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
+//        snackBar.show()
+
     }
 
 
@@ -128,6 +144,12 @@ object MyUtil {
         startActivity(Intent(context, cl))
     }
 
+    fun Context.explicitWeb(web:String){
+        val browserIntent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(web))
+        startActivity(browserIntent)
+    }
+
+
     fun Context.copyToClipboard(text: String) {
         val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("${getString(R.string.app_name)} : Copied Text", text)
@@ -145,17 +167,13 @@ object MyUtil {
     }
 
 
-    fun ImageView.setImage(url:String?){
-        Glide.with(this)
-            .load(url?.trim())
-            .override( Target.SIZE_ORIGINAL)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .thumbnail(Glide.with(this)
-            .load(R.drawable.ic_placeholder)).into(this)
-    }
 
-    fun ImageView.setImage(url:String?, placeholder:Int){
-        Glide.with(this).load(url?.trim()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(placeholder).into(this)
+    fun ImageView.setImage(url:String?, placeholder:Int?=R.drawable.app_logo_svg){
+        placeholder?.let {
+            Glide.with(this).load(url?.trim()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(
+                it
+            ).into(this)
+        }
     }
 
 
@@ -296,4 +314,56 @@ object MyUtil {
         }
         return Pair(alert, b)
     }
+
+    fun getCommaCurrency(text: String?): String {
+        var value = "0.00"
+        try {
+            val formatter = DecimalFormat("#,##,##0.00")
+//                val formatter: DecimalFormat = NumberFormat.getNumberInstance(Locale.getDefault()) as DecimalFormat
+            value = if (text != null) {
+                try {
+                    formatter.format(text.trim().toDouble())
+                } catch (e: Exception) {
+                    e.log()
+                    ""
+                }
+            } else {
+                formatter.format(0)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return "₹ $value"
+    }
+
+    fun getCommaCurrency(text: Double?): String {
+        var value = "0.00"
+        try {
+            val formatter = DecimalFormat("#,##,##0.00")
+//                val formatter: DecimalFormat = NumberFormat.getNumberInstance(Locale.getDefault()) as DecimalFormat
+            value = if (text != null) {
+                try {
+                    formatter.format(text )
+                } catch (e: Exception) {
+                    e.log()
+                    ""
+                }
+            } else {
+                formatter.format(0)
+            }
+        } catch (e: Exception) {
+            e.log()
+        }
+        return "₹ $value"
+    }
+
+    fun TextView.changeText(newText:String, duration: Long = 200) {
+        animate().scaleY(0f).setDuration(duration / 2).setListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                text = newText
+                animate().scaleY(1f).setDuration(duration / 2).setListener(null)
+            }
+        })
+    }
+
 }

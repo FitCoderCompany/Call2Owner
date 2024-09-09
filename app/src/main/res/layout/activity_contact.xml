@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ui.contact.ContactFragment">
+    tools:context=".ui.contact.ContactActivity">
     <LinearLayout
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -48,7 +48,6 @@
             android:layout_height="wrap_content"
             app:hint="Mobile Phone"
             android:id="@+id/mobile"
-            app:texts="91-77772222"
             app:action="Call"
             app:drawableTintEnable="false"
             app:enables="false"
@@ -59,7 +58,6 @@
             android:layout_height="wrap_content"
             app:hint="Email Address"
             android:id="@+id/email"
-            app:texts="help@call2owner.com"
             app:enables="false"
             app:drawableTintEnable="false"
             app:action="Email"

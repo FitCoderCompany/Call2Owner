@@ -6,7 +6,7 @@
     <dimen name="slightMargin">5dp</dimen>
     <dimen name="side_margin">10dp</dimen>
     <dimen name="extra_side_margin">20dp</dimen>
-    <dimen name="main_action_bar">42dp</dimen>
+    <dimen name="main_action_bar">45dp</dimen>
     <dimen name="status_bar">24dp</dimen>
 
     <integer name="id_length">15</integer>

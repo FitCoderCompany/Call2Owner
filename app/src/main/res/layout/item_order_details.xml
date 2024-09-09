@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/myCardStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/side_margin"
+    android:layout_marginVertical="@dimen/slightMargin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/side_margin"
+            android:translationZ="2dp"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp">
+
+            <ImageView
+                android:id="@+id/qrImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:layout_height="200dp"
+                tools:src="@drawable/placeholder_qr" />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/productName"
+            style="@style/myTextStyle"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="0dp"
+            android:background="@color/md_theme_surfaceVariant_highContrast"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:text="@string/buy_ticket_heading"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.call2owner.custom.TwoLinearText
+            android:id="@+id/orderNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Order Number" />
+
+
+
+        <com.call2owner.custom.TwoLinearText
+            android:id="@+id/quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Quantity" />
+
+        <com.call2owner.custom.TwoLinearText
+            android:id="@+id/priceItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Price Per Item"
+            />
+
+        <com.call2owner.custom.TwoLinearText
+            android:id="@+id/totalAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Total Amount" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/activate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/side_margin"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="@dimen/side_margin"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/activate_card"
+            android:textAllCaps="false"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

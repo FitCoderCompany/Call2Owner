@@ -7,14 +7,13 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_contact"
-        android:icon="@drawable/ic_contact"
-        android:title="@string/title_contact" />
-
-    <item
         android:id="@+id/navigation_cart"
         android:icon="@drawable/ic_cart"
         android:title="@string/title_cart" />
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/ic_contact"
+        android:title="@string/history" />
 
     <item
         android:id="@+id/navigation_profile"

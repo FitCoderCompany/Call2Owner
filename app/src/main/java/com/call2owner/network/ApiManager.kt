@@ -47,12 +47,14 @@ class ApiManager @Inject constructor(@ActivityContext private val context: Conte
             primaryCall.enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     hideLoader()
-                    val responseValue = response.body()?.string()
-                    val errorResp = response.errorBody()?.string()
                     val responseCode=response.code()
+                    val responseValue =if(responseCode==200){
+                        response.body()?.string()
+                    }else{
+                        response.errorBody()?.string()
+                    }
                     "Response Code for $type: $responseCode".log()
                     "Response Param for $type: $responseValue".log()
-                    "Response Error Param for $type: $errorResp".log()
                     listener.onResult(type,  responseCode==200, responseValue ?: errorMsg)
                 }
 
@@ -67,24 +69,24 @@ class ApiManager @Inject constructor(@ActivityContext private val context: Conte
         }
     }
 
-
-    fun getToken(isLoad: Boolean){
+    fun getToken(isLoad: Boolean, listener: NetworkInterface){
         if (DetectConnection(context).checkInternetConnection()) {
             if (isLoad) showLoader("Generating Token")
             val type="tokenID"
             myApiService.getToken().enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+
                     hideLoader()
-                    val responseValue = response.body()?.string()
-                    val errorResp = response.errorBody()?.string()
                     val responseCode=response.code()
+                    val responseValue =if(responseCode==200){
+                        response.body()?.string()
+                    }else{
+                        response.errorBody()?.string()
+                    }
                     "Response Code for $type: $responseCode".log()
                     "Response Param for $type: $responseValue".log()
-                    "Response Error Param for $type: $errorResp".log()
-                    if(response.isSuccessful){
-                        val resp=responseValue?.model(TokenResponse::class.java)
-                        appData.authToken=resp?.auth?:""
-                    }
+                    listener.onResult(type,  responseCode==200, responseValue ?: "errorMsg")
+
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
