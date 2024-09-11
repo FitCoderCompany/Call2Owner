@@ -1,5 +1,6 @@
 package com.call2owner.ui.auth
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,20 +8,21 @@ import android.view.ViewGroup
 import com.call2owner.R
 import com.call2owner.databinding.FragmentProfileBinding
 import com.call2owner.model.CommonRequest
-import com.call2owner.model.CommonResponse
 import com.call2owner.model.ProfileResponse
-import com.call2owner.model.UpdateProfileRequest
 import com.call2owner.ui.BaseFragment
 import com.call2owner.ui.activity.MainActivity
+import com.call2owner.ui.activity.OwnCardActivity
+import com.call2owner.ui.activity.ProfileActivity
 import com.call2owner.ui.activity.auth.LoginActivity
-import com.call2owner.utils.MyUtil
+import com.call2owner.ui.activity.ContactActivity
+import com.call2owner.utils.MyUtil.explicitWeb
 import com.call2owner.utils.MyUtil.fitDialog
 import com.call2owner.utils.MyUtil.log
 import com.call2owner.utils.MyUtil.model
+import com.call2owner.utils.MyUtil.openImplicitWeb
 
 class ProfileFragment : BaseFragment() {
     private lateinit var binding: FragmentProfileBinding
-    private val updateID="updateID"
     private val getProfileID="getProfileID"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -38,80 +40,94 @@ class ProfileFragment : BaseFragment() {
            val d= fitDialog(requireContext(), requireActivity(), "", "Please login to continue", "Login", "Cancel", false, R.raw.login, true){
                start(LoginActivity::class.java)
            }
-            d.second.cancel.setOnClickListener{
-                d.first.dismiss()
-                ( requireActivity() as MainActivity).navController?.navigate(R.id.navigation_home)
-            }
+           d.second.cancel.setOnClickListener {
+               d.first.dismiss()
+               (requireActivity() as MainActivity).navController?.navigate(R.id.navigation_home)
+           }
         }else{
             val req=CommonRequest(id=userData.id,action="GetProfile")
-
             apiManager.makeRequest(getProfileID,true,"Getting Profile Info",myApiService.login(req),this)
             setProfileData()
 
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setProfileData() {
         binding.apply {
-            fName.text=userData.fname
-            lName.text=userData.lname
+
+            if(userData.fname.isEmpty()){
+                val d= fitDialog(requireContext(), requireActivity(), "", "Please Complete your profile", "Ok", "Cancel", false, R.raw.profile, true){
+                    start(ProfileActivity::class.java)
+                }
+                d.second.cancel.setOnClickListener{
+                    d.first.dismiss()
+                    ( requireActivity() as MainActivity).navController?.navigate(R.id.navigation_home)
+                }
+            }
+
+
+            name.text="${userData.fname} ${userData.lname }".trim()
             number.text=userData.mobile
             email.text=userData.email
-            address.text=userData.address1 + " " + userData.address2
-            city.text=userData.city
-            pinCode.text=userData.pincode
-            state.text=userData.state
-            country.text=userData.country.ifEmpty { "India" }
+            address.text="${userData.address1}, ${userData.city}, ${userData.state}, ${userData.country}-${userData.pincode}"
 
-            update.setOnClickListener{
-                val req= UpdateProfileRequest(
-                    id = userData.id,
-                    action = "profileUpdate",
-                    fname = fName.text,
-                    lname = lName.text,
-                    email = email.text,
-                    city = city.text,
-                    address = address.text,
-                    state = state.text,
-                    country = country.text,
-                    pincode = pinCode.text
-                )
-                apiManager.makeRequest(updateID,true,"Saving Profile",myApiService.updateProfile(req),this@ProfileFragment)
+            version.text="Version ${requireContext().packageManager.getPackageInfo(requireContext().packageName, 0).versionName} | Made in India"
+
+            activatedCard.setOnClickListener{
+                start(OwnCardActivity::class.java)
             }
-        }
 
-    }
+            edit.setOnClickListener{
+                start(ProfileActivity::class.java)
+            }
+            privacy.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/privacy-policy")
+            }
+            terms.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/terms-and-condition")
+            }
 
-    private fun updateData() {
-        binding.apply {
-            userData.fname = fName.text
-            userData.lname = lName.text
-            userData.email =  email.text
-            userData.address1 = address.text
-            userData.pincode = pinCode.text
-            userData.state = state.text
-            userData.country = country.text
+            faq.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/frequently-asked-questions")
+            }
+
+            vehiclePolicy.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/vehicle-tag-privacy-policy")
+            }
+            returnPolicy.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/return-policy")
+            }
+
+            use.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/how-to-use")
+            }
+            about.setOnClickListener{
+                requireContext().openImplicitWeb("https://call2owner.com/about-us")
+            }
+            contact.setOnClickListener{
+                start(ContactActivity::class.java)
+            }
+            instagram.setOnClickListener{
+                requireContext().explicitWeb("https://www.instagram.com/call2owner/")
+            }
+            linkedin.setOnClickListener{
+                requireContext().explicitWeb("https://www.linkedin.com/company/call2owner/")
+            }
+            facebook.setOnClickListener{
+                requireContext().explicitWeb("https://www.facebook.com/call2owner")
+            }
+            twitter.setOnClickListener{
+                requireContext().explicitWeb("https://x.com/Call2Owner")
+            }
+            youtube.setOnClickListener{
+                requireContext().explicitWeb("https://www.youtube.com/@call2owner")
+            }
         }
     }
 
     override fun onResult(type: String, success: Boolean, response: String) {
         when(type){
-            updateID-> {
-                try{
-                    val resp=response.model(CommonResponse::class.java)
-                    if (success) {
-                        updateData()
-                        
-                        fitDialog(requireContext(),requireActivity(),"","Profile Updated Successfully","Ok","",true,R.raw.success,true){ }
-                    } else {
-                        showErrorSnackBar(resp?.message)
-                    }
-                }catch (e:Exception){
-                    e.log()
-                    showErrorSnackBar("Bad Json Format ${e.message}")
-                }
-            }
-
             getProfileID-> {
                 try{
                     val resp=response.model(ProfileResponse::class.java)

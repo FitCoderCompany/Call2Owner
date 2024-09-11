@@ -116,6 +116,7 @@ class OrderDetailsActivity : BaseActivity() {
                                 putExtra("wholeData",wholeData)
                                 putExtra("shippingDetails",shipping)
                                 putExtra("data",item)
+                                startActivity(this)
                             }
                         }
                     }

@@ -36,6 +36,7 @@ import com.call2owner.R
 import com.call2owner.databinding.LayoutDialogBinding
 import com.call2owner.databinding.LayoutNoInternetBinding
 import com.call2owner.network.Constant
+import com.call2owner.ui.activity.WebActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import java.text.DecimalFormat
@@ -149,6 +150,12 @@ object MyUtil {
         startActivity(browserIntent)
     }
 
+    fun Context.openImplicitWeb(web: String) {
+        Intent(this, WebActivity::class.java).run{
+            putExtra("url",web)
+            startActivity(this)
+        }
+    }
 
     fun Context.copyToClipboard(text: String) {
         val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -176,25 +183,10 @@ object MyUtil {
         }
     }
 
-
-    fun Window.hideSystemBars() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            setDecorFitsSystemWindows(false)
-            WindowCompat.getInsetsController(this, decorView).let { controller ->
-                controller.hide(WindowInsetsCompat.Type.systemBars())
-                controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-            }
-        } else {
-            @Suppress("DEPRECATION")
-            // For older versions, use the deprecated SYSTEM_UI_FLAG approach
-            decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_FULLSCREEN)
-        }
+    fun String.isValidEmail(): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
+
 
     fun Context.getProviderName(): String {
         return  getString(R.string.provider_name)

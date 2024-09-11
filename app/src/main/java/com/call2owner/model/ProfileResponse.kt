@@ -4,6 +4,7 @@ package com.call2owner.model
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 import com.google.gson.annotations.Expose
+import java.io.Serializable
 
 @Keep
 data class ProfileResponse(
@@ -43,5 +44,5 @@ data class ProfileResponse(
         @SerializedName("state")
         @Expose
         var state: String? = ""
-    )
+    ):Serializable
 }

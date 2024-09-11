@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.EditCardActivity">
+
+    <com.call2owner.custom.Header
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading"
+        app:heading="Edit Your Card"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_msg"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_profile"
+        app:hint="Name"
+        android:id="@+id/name"
+        app:enables="false"
+        />
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_cart"
+        app:hint="Card Number"
+        android:id="@+id/cardNo"
+        app:enables="false"
+        />
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_mail"
+        app:hint="Email"
+        app:error="Enter Valid Email ID"
+        app:inputType="textEmailAddress"
+        android:id="@+id/email"
+        />
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_mobile"
+        app:drawableTintEnable="false"
+        app:inputType="number"
+        app:maxLength="10"
+        app:error="Enter Valid Number ID"
+        app:hint="Mobile Number"
+        android:id="@+id/number"
+        />
+
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_mobile"
+        app:drawableTintEnable="false"
+        app:hint="Vehicle Number"
+        android:id="@+id/vehicleNumber"
+        app:enables="false"
+        />
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_date"
+        app:drawableTintEnable="false"
+        app:hint="Activation date"
+        android:id="@+id/date"
+        app:enables="false"
+        />
+    <com.call2owner.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_date"
+        app:drawableTintEnable="false"
+        app:hint="Expiry Date"
+        android:id="@+id/expiry"
+        app:enables="false"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/side_margin"
+        android:text="@string/submit"
+        android:id="@+id/submit"
+        />
+</LinearLayout>

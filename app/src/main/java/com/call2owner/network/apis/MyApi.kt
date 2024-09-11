@@ -5,6 +5,7 @@ import com.call2owner.model.CardInfoRequest
 import com.call2owner.model.CartEditRequest
 import com.call2owner.model.CartRequest
 import com.call2owner.model.CommonRequest
+import com.call2owner.model.EditCardRequest
 import com.call2owner.model.ShippingRequest
 import com.call2owner.model.UpdateProfileRequest
 import com.call2owner.network.Constant
@@ -52,6 +53,12 @@ interface MyApi {
 
     @POST(Constant.cardApi)
     fun cardApi(@Body req: CardInfoRequest): Call<ResponseBody>
+
+    @POST(Constant.cardApi)
+    fun activatedCard(@Body req: CommonRequest): Call<ResponseBody>
+
+    @POST(Constant.cardApi)
+    fun editCard(@Body req: EditCardRequest): Call<ResponseBody>
 
     @POST(Constant.cardApi)
     fun activateCard(@Body req: ActivateCardRequest): Call<ResponseBody>

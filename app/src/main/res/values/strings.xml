@@ -114,5 +114,14 @@
     <string name="activate_card">Activate Card</string>
     <string name="shipping_details">Shipping Details</string>
     <string name="activate">Activate Card</string>
+    <string name="edit">Edit</string>
+    <string name="email_id">Email ID</string>
+    <string name="help_amp_support"><![CDATA[Help & Support]]></string>
+    <string name="activated_card">Activated Card</string>
+    <string name="frequentlty_asked_question">Frequentlty Asked Question</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="submit">Submit</string>
+    <string name="edit_msg">#NOTE: You can only edit linked Mobile Number and Email ID.</string>
+    <string name="start_shipping">Start Shipping</string>
 
 </resources>

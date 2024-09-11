@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -45,7 +46,9 @@
         android:id="@+id/total"
         />
 
-    <View style="@style/line" />
+    <View style="@style/line"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        />
 
 
     <TextView
@@ -60,6 +63,7 @@
         android:layout_height="wrap_content"
         android:text="@string/cash_on_delivery"
         android:checked="true"
+        android:enabled="false"
         android:buttonTintMode="multiply"
         android:buttonTint="@color/colorPrimaryDark"
         android:foregroundTint="@color/black"
@@ -93,7 +97,9 @@
         android:layout_margin="0dp"
         android:paddingHorizontal="@dimen/side_margin"
         android:paddingBottom="@dimen/side_margin"
+        android:visibility="gone"
         />
+
 
 
     <View style="@style/line" />
@@ -112,13 +118,13 @@
         android:id="@+id/arrivalDate"
         android:textStyle="normal"
         android:layout_marginVertical="0dp"
-        tools:text="in 3-4 Business Days"
+        android:text="in 3-4 Business Days"
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Shipping"
+        android:text="@string/start_shipping"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:id="@+id/startShipping"

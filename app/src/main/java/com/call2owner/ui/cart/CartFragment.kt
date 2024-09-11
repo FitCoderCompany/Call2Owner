@@ -1,13 +1,19 @@
 package com.call2owner.ui.cart
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.call2owner.R
 import com.call2owner.databinding.FragmentCartBinding
 import com.call2owner.databinding.ItemCartBinding
+import com.call2owner.databinding.LayoutAddressBinding
 import com.call2owner.model.CartEditRequest
 import com.call2owner.model.CartRequest
 import com.call2owner.model.CartResponse
@@ -22,7 +28,10 @@ import com.call2owner.utils.MyUtil.fitDialog
 import com.call2owner.utils.MyUtil.getCommaCurrency
 import com.call2owner.utils.MyUtil.log
 import com.call2owner.utils.MyUtil.model
+import com.call2owner.utils.MyUtil.toast
 import com.google.android.gms.common.internal.service.Common
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlin.math.ln
 
 class CartFragment : BaseFragment() {
@@ -31,6 +40,7 @@ class CartFragment : BaseFragment() {
     private val removeID: String by lazy { "removeID"}
     private val updateID: String by lazy { "updateID"}
     private val shippingID: String by lazy { "shippingID"}
+
     private var removedPosition=0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCartBinding.inflate(layoutInflater)
@@ -80,6 +90,7 @@ class CartFragment : BaseFragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateValues(data: List<CartResponse.Data?>) {
         var totalAmount=0.0
         data.forEach {
@@ -90,34 +101,63 @@ class CartFragment : BaseFragment() {
             proceed.text= getString(R.string.proceed_to_buy_items_, data.size.toString())
             subTotal.text= getString(R.string.subtotal_, MyUtil.getCommaCurrency(totalAmount))
 
-            proceed.setOnClickListener{
-                getAddress()
+            proceed.setOnClickListener {
+                if(userData.fname.isEmpty()) {
+                    fitDialog(requireContext(),requireActivity(),"Incomplete profile","Complete your profile to continue","Complete","",false,R.raw.profile,true){
+                        requireContext().toast("Enter your address in Profile")
+                        (requireActivity() as MainActivity).navController?.navigate(R.id.navigation_profile)
+                    }
+                }else{
+                    val circleSheet = BottomSheetDialog(requireContext(), R.style.FullBottomSheetTheme)
+                    val cBinding = LayoutAddressBinding.inflate(layoutInflater)
+                    circleSheet.setContentView(cBinding.root)
+                    cBinding.apply {
+                        price.sub= getCommaCurrency(totalAmount)
+                        val deliveryCharge=0.00 // to be changed
+                        delivery.sub= getCommaCurrency(deliveryCharge)
+                        totalAmount+=deliveryCharge
+                        total.sub= getCommaCurrency(totalAmount)
+                        profileAddress.text="${userData.address1}, ${userData.city}, ${userData.state}, ${userData.country}-${userData.pincode}"
+                        changeAddress.setOnClickListener{
 
+                        }
 
+                        startShipping.setOnClickListener{
+                            circleSheet.dismiss()
+                            startShipping(totalAmount.toString())
+                        }
+                    }
+                    circleSheet.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    circleSheet.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                    circleSheet.show()
 
-                val req=ShippingRequest(
-                    action = "shipping",
-                    address = "${userData.address1} ${userData.address2}",
-                    cartID = userData.cartID,
-                    city = userData.city,
-                    country = userData.country,
-                    email = userData.email,
-                    fname = userData.fname,
-                    lname = userData.lname,
-                    mobile = userData.mobile,
-                    pincode = userData.pincode,
-                    state = userData.state,
-                    totalAmount = totalAmount.toString(),
-                    uid = userData.id
-                )
-
-                apiManager.makeRequest(shippingID,true,"Booking Card",myApiService.shipping(req),this@CartFragment)
+                }
             }
+
         }
     }
 
-    private fun getAddress() {
+    private fun startShipping(amount:String) {
+        binding.apply {
+            val req=ShippingRequest(
+                action = "shipping",
+                address = "${userData.address1} ${userData.address2}",
+                cartID = userData.cartID,
+                city = userData.city,
+                country = userData.country,
+                email = userData.email,
+                fname = userData.fname,
+                lname = userData.lname,
+                mobile = userData.mobile,
+                pincode = userData.pincode,
+                state = userData.state,
+                totalAmount = amount,
+                uid = userData.id
+            )
 
+            apiManager.makeRequest(shippingID,true,"Booking Card",myApiService.shipping(req),this@CartFragment)
+
+        }
 
     }
 

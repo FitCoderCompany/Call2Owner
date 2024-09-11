@@ -22,7 +22,7 @@ import com.call2owner.utils.MyUtil.model
 
 class CardActivationActivity : BaseActivity() {
     private lateinit var binding:ActivityCardActivationBinding
-    var wholeData: HistoryResponse.Order?=null
+    private var wholeData: HistoryResponse.Order?=null
 
     val infoID="InfoID"
     val activateCardID ="activateCardID"
@@ -38,10 +38,10 @@ class CardActivationActivity : BaseActivity() {
 
     private fun initView() {
         wholeData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getSerializableExtra("data",HistoryResponse.Order::class.java)
+            intent.getSerializableExtra("wholeData",HistoryResponse.Order::class.java)
         } else {
             @Suppress("DEPRECATION")
-            intent.getSerializableExtra("data") as HistoryResponse.Order
+            intent.getSerializableExtra("wholeData") as HistoryResponse.Order
         }
 
         getDetails()
@@ -94,7 +94,7 @@ class CardActivationActivity : BaseActivity() {
                     if (success) {
                         cardNo=resp?.card?.cardNo?:""
                     } else {
-                        showErrorSnackBar(resp?.message)
+                        showErrorSnackBar(resp?.message?:"Card Already Activated")
                     }
                 }catch (e:Exception){
                     e.log()

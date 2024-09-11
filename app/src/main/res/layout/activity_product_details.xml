@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,155 +17,160 @@
         android:id="@+id/header"
         />
 
-
-    <androidx.cardview.widget.CardView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:id="@+id/productCard"
-        android:layout_margin="@dimen/side_margin"
-        android:visibility="gone"
-        app:cardCornerRadius="@dimen/side_margin"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/header"
         android:layout_height="wrap_content">
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/productCard"
+            android:layout_margin="@dimen/side_margin"
+            android:visibility="visible"
+            app:cardCornerRadius="@dimen/side_margin"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/header"
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                app:cardElevation="2dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:cardCornerRadius="2dp"
-                android:translationZ="2dp"
-                android:id="@+id/qrCard"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardElevation="2dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:cardCornerRadius="2dp"
+                    android:translationZ="2dp"
+                    android:id="@+id/qrCard"
+                    android:layout_margin="@dimen/side_margin"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/qrImage"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        tools:layout_height="200dp"
+                        tools:src="@drawable/placeholder_qr"
+                        android:layout_margin="0dp"
+                        />
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    app:layout_constraintTop_toBottomOf="@id/qrCard"
+                    style="@style/myTextStyle"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginVertical="@dimen/side_margin"
+                    android:paddingVertical="5dp"
+                    android:background="@color/md_theme_surfaceVariant_highContrast"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/productName"
+                    android:layout_gravity="center"
+                    android:text="@string/buy_ticket_heading"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/offerPrice"
+                        style="@style/myTextStyle"
+                        android:text="₹499.00"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/price"
+                        style="@style/myTextStyle"
+                        android:text="₹ 599.00"
+                        android:textColor="@color/grey"
+                        android:textSize="12sp"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintStart_toEndOf="@id/offerPrice"
+                        app:layout_constraintTop_toTopOf="@id/offerPrice"
+                        app:layout_constraintBottom_toBottomOf="@id/offerPrice"
+                        />
+
+                    <include
+                        android:id="@+id/quantity"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        layout="@layout/layout_counter"
+                        android:layout_marginTop="@dimen/side_margin"
+                        android:layout_marginEnd="@dimen/side_margin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View style="@style/line" />
+                <TextView
+                    android:id="@+id/cardInfoTxt"
+                    style="@style/myTextStyle"
+                    android:text="Card Information"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qrImage"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    tools:layout_height="200dp"
-                    tools:src="@drawable/placeholder_qr"
-                    android:layout_margin="0dp"
-                    />
-            </androidx.cardview.widget.CardView>
-
-
-            <TextView
-                app:layout_constraintTop_toBottomOf="@id/qrCard"
-                style="@style/myTextStyle"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginVertical="@dimen/side_margin"
-                android:paddingVertical="5dp"
-                android:background="@color/md_theme_surfaceVariant_highContrast"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:id="@+id/productName"
-                android:layout_gravity="center"
-                android:text="@string/buy_ticket_heading"
-                />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
+                    android:textColor="@color/black"
+                    android:id="@+id/cardInfo"
+                    android:justificationMode="inter_word"
+                    android:text="Call2Owner Vehicle QR code pack of 2. It is a two-dimensional qrcode that can be scanned using a smartphone or QR code reader to quickly access the vehicle owner information. You can create a QR code for your vehicle, you can include your contact number and emergency contact number."
+                    android:layout_margin="@dimen/side_margin"
+                    android:textStyle="normal"
+                    tools:ignore="UnusedAttribute" />
+                <View style="@style/line" />
 
                 <TextView
-                    android:id="@+id/offerPrice"
+                    android:id="@+id/shippingInfoTxt"
                     style="@style/myTextStyle"
-                    tools:text="₹499.00"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Shipping Information"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
                     />
-
                 <TextView
-                    android:id="@+id/price"
-                    style="@style/myTextStyle"
-                    tools:text="₹ 599.00"
-                    android:textColor="@color/grey"
-                    android:textSize="12sp"
-                    android:layout_marginStart="20dp"
-                    app:layout_constraintStart_toEndOf="@id/offerPrice"
-                    app:layout_constraintTop_toTopOf="@id/offerPrice"
-                    app:layout_constraintBottom_toBottomOf="@id/offerPrice"
-                    />
-
-                <include
-                    android:id="@+id/quantity"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    layout="@layout/layout_counter"
-                    android:layout_marginTop="@dimen/side_margin"
-                    android:layout_marginEnd="@dimen/side_margin"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/black"
+                    android:id="@+id/shippingInfo"
+                    android:justificationMode="inter_word"
+                    android:text="This Shipping and Delivery Policy is part of our Terms and Conditions (Terms) and should be therefore read alongside our main Terms: https://www.call2owner.com/shipping-policy."
+                    android:textStyle="normal"
+                    android:layout_margin="@dimen/side_margin"
+                    tools:ignore="UnusedAttribute" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/placeOrder"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="@dimen/side_margin"
+                    android:text="@string/place_order"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
                     />
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <View style="@style/line" />
-            <TextView
-                android:id="@+id/cardInfoTxt"
-                style="@style/myTextStyle"
-                tools:text="Card Information"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                />
+        </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:id="@+id/cardInfo"
-                android:justificationMode="inter_word"
-                tools:text="Call2Owner Vehicle QR code pack of 2. It is a two-dimensional qrcode that can be scanned using a smartphone or QR code reader to quickly access the vehicle owner information. You can create a QR code for your vehicle, you can include your contact number and emergency contact number."
-                android:layout_margin="@dimen/side_margin"
-                android:textStyle="normal"
-                tools:ignore="UnusedAttribute" />
-            <View style="@style/line" />
 
-            <TextView
-                android:id="@+id/shippingInfoTxt"
-                style="@style/myTextStyle"
-                tools:text="Shipping Information"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:id="@+id/shippingInfo"
-                android:justificationMode="inter_word"
-                tools:text="This Shipping and Delivery Policy is part of our Terms and Conditions (Terms) and should be therefore read alongside our main Terms: https://www.call2owner.com/shipping-policy."
-                android:textStyle="normal"
-                android:layout_margin="@dimen/side_margin"
-                tools:ignore="UnusedAttribute" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/placeOrder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="@dimen/side_margin"
-        android:text="@string/place_order"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

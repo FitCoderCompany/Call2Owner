@@ -16,16 +16,15 @@ import com.call2owner.model.CommonResponse
 import com.call2owner.model.ProductResponse
 import com.call2owner.model.TokenResponse
 import com.call2owner.ui.BaseFragment
-import com.call2owner.ui.activity.MainActivity
 import com.call2owner.ui.activity.ProductDetailsActivity
 import com.call2owner.ui.activity.ScanActivity
-import com.call2owner.ui.activity.WebActivity
-import com.call2owner.ui.contact.ContactActivity
+import com.call2owner.ui.activity.ContactActivity
 import com.call2owner.utils.MyUtil.capWord
 import com.call2owner.utils.MyUtil.doubleCurrency
 import com.call2owner.utils.MyUtil.explicitWeb
 import com.call2owner.utils.MyUtil.log
 import com.call2owner.utils.MyUtil.model
+import com.call2owner.utils.MyUtil.openImplicitWeb
 import com.call2owner.utils.MyUtil.setImage
 import com.call2owner.utils.bannerSlider.ParallelXViewPagerTransformer
 import com.call2owner.utils.bannerSlider.SliderAdapterPager
@@ -64,10 +63,12 @@ class HomeFragment : BaseFragment() {
                 it.isChecked=false
                 drawerLayout.close()
                 when (it.itemId) {
-                    R.id.about ->  openImplicitWeb("https://call2owner.com/about-us")
+                    R.id.about ->  requireContext().openImplicitWeb("https://call2owner.com/about-us")
                     R.id.contact -> start(ContactActivity::class.java)
-                    R.id.faq ->  openImplicitWeb("https://call2owner.com/frequently-asked-questions")
-                    R.id.use -> openImplicitWeb("https://call2owner.com/how-to-use")
+                    R.id.faq ->  requireContext().openImplicitWeb("https://call2owner.com/frequently-asked-questions")
+                    R.id.use -> requireContext().openImplicitWeb("https://call2owner.com/how-to-use")
+                    R.id.privacy -> requireContext().openImplicitWeb("https://call2owner.com/privacy-policy")
+                    R.id.terms -> requireContext().openImplicitWeb("https://call2owner.com/how-to-use")
 
                     R.id.fb -> requireContext().explicitWeb("https://www.facebook.com/call2owner")
                     R.id.x -> requireContext().explicitWeb("https://x.com/Call2Owner")
@@ -84,12 +85,6 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun openImplicitWeb(web: String) {
-        Intent(requireContext(),WebActivity::class.java).run{
-            putExtra("url",web)
-            startActivity(this)
-        }
-    }
 
     private fun getAllData() {
 

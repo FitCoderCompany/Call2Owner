@@ -5,13 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.call2owner.R
 import com.call2owner.databinding.ActivitySplashBinding
 import com.call2owner.ui.BaseActivity
-import com.call2owner.utils.MyUtil.hideSystemBars
 import com.call2owner.utils.animation.Animation.fadeIn
 
 @SuppressLint("CustomSplashScreen")

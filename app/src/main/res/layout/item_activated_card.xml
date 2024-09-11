@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/myCardStyle"
+    android:id="@+id/main"
+    android:layout_marginHorizontal="@dimen/side_margin"
+    android:layout_marginVertical="@dimen/slightMargin"
+    app:cardBackgroundColor="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="2dp"
+        android:background="@drawable/card_inner_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Name"
+            android:id="@+id/name"
+            />
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Card Number"
+            android:id="@+id/cardNo"
+            />
+
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Email"
+            android:id="@+id/email"
+            />
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/vehicle_number"
+            android:id="@+id/vehicleNumber"
+            />
+
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Linked Number"
+            android:id="@+id/number"
+            />
+
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Activated date"
+            android:id="@+id/date"
+            />
+
+        <com.call2owner.custom.TwoLinearText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Expiry Date"
+            android:id="@+id/expiry"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit"
+            android:visibility="gone"
+            android:text="@string/edit"
+            android:layout_margin="@dimen/side_margin"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

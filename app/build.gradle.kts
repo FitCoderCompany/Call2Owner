@@ -64,11 +64,13 @@ android {
         }
     }
 
+
+
     applicationVariants.all {
-        outputs.all {
-            project.ext.set("appName", "Wltpe-app")
-            outputFile.name.replace("app-", "${project.ext["appName"]}-")
-//            outputFile.name = newName
+        outputs.all {o->
+            project.ext.set("appName", "call2owner-app")
+            o.outputFile.name.replace("app-", "${project.ext["appName"]}-")
+            true
         }
     }
 
