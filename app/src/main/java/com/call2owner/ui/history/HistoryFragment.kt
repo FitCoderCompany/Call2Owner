@@ -33,8 +33,6 @@ class HistoryFragment : BaseFragment() {
     private fun getHistory() {
         val req=CommonRequest(uid=userData.id, action = "OrderList")
         apiManager.makeRequest(historyID,true,"Fetching Order List",myApiService.orderHistory(req),this)
-
-
     }
 
     private fun initView(orderList: ArrayList<HistoryResponse.Order?>?) {

@@ -11,10 +11,6 @@ class AppData @Inject constructor(@ApplicationContext private val context: Conte
 
     private val sp = context.getSharedPreferences(Constant.sharePrefName, Context.MODE_PRIVATE)
     private val editor = sp.edit()
-
-
-
-
     var authToken: String
         get() = sp.getString("authToken", "") ?: ""
         set(v) = editor.putString("authToken", v).apply()

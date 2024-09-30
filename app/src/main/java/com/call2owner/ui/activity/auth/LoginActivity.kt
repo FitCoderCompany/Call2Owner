@@ -9,6 +9,7 @@ import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.provider.Settings
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
@@ -41,8 +42,18 @@ class LoginActivity : BaseActivity() {
         registerSmsBroadcastReceiver()
     }
 
+
+    private fun saveDeviceID() {
+        if(userData.deviceKey.isEmpty()){
+            val id = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+            id.log()
+            userData.deviceKey=id
+        }
+    }
+
     private fun initView() {
         binding.apply {
+            saveDeviceID()
             mobileNumber.getEditView().doAfterTextChanged {
                 it?.let {
                     binding.sendOTP.isEnabled=it.length==10
@@ -60,7 +71,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun startLogin() {
-        val req= CommonRequest(action = "login", mobile = binding.mobileNumber.text)
+        val req= CommonRequest(action = "login", mobile = binding.mobileNumber.text, deviceKey = userData.deviceKey)
         apiManager.makeRequest(loginID,true,"Sending OTP",myApiService.login(req),this)
     }
 
@@ -93,7 +104,8 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun callVerifyOTP(otp: String) {
-        val req=CommonRequest(action = "verify", mobile = binding.mobileNumber.text, enteredOtp = otp)
+        val req=CommonRequest(action = "verify", mobile = binding.mobileNumber.text, enteredOtp = otp, deviceKey = userData.deviceKey)
+
         apiManager.makeRequest(verify,true,"Verifying OTP",myApiService.login(req),this)
     }
 
@@ -204,7 +216,13 @@ class LoginActivity : BaseActivity() {
                 if(success){
                     resp?.data?.get(0)?.let {
                         userData.saveLoginData(it)
+                        start(MainActivity::class.java)
                         finish()
+                    }?:{
+                        binding.otpView.setOTP("")
+                        binding.otpView.showError()
+                        binding.otpError.text= getString(R.string.something_went_wrong)
+                        showErrorSnackBar(resp?.message)
                     }
                 }else{
                     binding.otpView.setOTP("")

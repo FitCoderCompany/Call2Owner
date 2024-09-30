@@ -27,35 +27,17 @@ class ProfileFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentProfileBinding.inflate(layoutInflater)
+        initView()
         return binding.root
     }
-
-    override fun onResume() {
-        super.onResume()
-        checkLogin()
-    }
-
-    private fun checkLogin() {
-        if(userData.id.trim().isEmpty()){
-           val d= fitDialog(requireContext(), requireActivity(), "", "Please login to continue", "Login", "Cancel", false, R.raw.login, true){
-               start(LoginActivity::class.java)
-           }
-           d.second.cancel.setOnClickListener {
-               d.first.dismiss()
-               (requireActivity() as MainActivity).navController?.navigate(R.id.navigation_home)
-           }
-        }else{
-            val req=CommonRequest(id=userData.id,action="GetProfile")
-            apiManager.makeRequest(getProfileID,true,"Getting Profile Info",myApiService.login(req),this)
-            setProfileData()
-
-        }
+    private fun initView() {
+        val req=CommonRequest(id=userData.id,action="GetProfile")
+        apiManager.makeRequest(getProfileID,true,"Getting Profile Info",myApiService.login(req),this)
     }
 
     @SuppressLint("SetTextI18n")
     private fun setProfileData() {
         binding.apply {
-
             if(userData.fname.isEmpty()){
                 val d= fitDialog(requireContext(), requireActivity(), "", "Please Complete your profile", "Ok", "Cancel", false, R.raw.profile, true){
                     start(ProfileActivity::class.java)
@@ -66,12 +48,28 @@ class ProfileFragment : BaseFragment() {
                 }
             }
 
-
             name.text="${userData.fname} ${userData.lname }".trim()
             number.text=userData.mobile
             email.text=userData.email
             address.text="${userData.address1}, ${userData.city}, ${userData.state}, ${userData.country}-${userData.pincode}"
 
+            logOutCard.setOnClickListener {
+                fitDialog(
+                    requireContext(),
+                    requireActivity(),
+                    "Log Out",
+                    "Are you sure you want to log out?",
+                    "Yes",
+                    "No",
+                    true,
+                    R.raw.log_out,
+                    true
+                ) {
+                    userData.clearAllPreferences()
+                    start(LoginActivity::class.java)
+                    requireActivity().finishAffinity()
+                }
+            }
             version.text="Version ${requireContext().packageManager.getPackageInfo(requireContext().packageName, 0).versionName} | Made in India"
 
             activatedCard.setOnClickListener{
@@ -133,6 +131,8 @@ class ProfileFragment : BaseFragment() {
                     val resp=response.model(ProfileResponse::class.java)
                     if (success) {
                         resp?.data?.apply {
+                            userData.isProfileFetched=true
+
                             userData.fname = fname?:""
                             userData.lname = lname?:""
                             userData.email =  email?:""

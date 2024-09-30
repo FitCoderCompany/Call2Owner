@@ -40,6 +40,12 @@
                     android:textSize="18sp" />
 
                 <com.call2owner.custom.TwoLinearText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Name" />
+
+                <com.call2owner.custom.TwoLinearText
                     android:id="@+id/number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

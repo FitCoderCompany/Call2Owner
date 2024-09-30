@@ -10,7 +10,7 @@ data class CommonResponse(
     @SerializedName("message")
     @Expose
     var message: String? = "",
-    @SerializedName("statusCode")
+    @SerializedName("statusCode" )
     @Expose
     var statusCode: Int? = 0
 )

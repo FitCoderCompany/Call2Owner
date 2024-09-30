@@ -111,18 +111,7 @@ class ProfileActivity : BaseActivity() {
                     val resp = response.model(CommonResponse::class.java)
                     if (success) {
                         updateData()
-
-                        fitDialog(
-                            context,
-                            activity,
-                            "",
-                            "Profile Updated Successfully",
-                            "Ok",
-                            "",
-                            true,
-                            R.raw.success,
-                            true
-                        ) { }
+                        fitDialog(context, activity, "", "Profile Updated Successfully", "Ok", "", true, R.raw.success, true) { }
                     } else {
                         showErrorSnackBar(resp?.message)
                     }

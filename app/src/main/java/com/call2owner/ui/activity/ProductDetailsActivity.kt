@@ -1,6 +1,7 @@
 package com.call2owner.ui.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Build
@@ -12,6 +13,7 @@ import com.call2owner.model.AddCartRequest
 import com.call2owner.model.CommonRequest
 import com.call2owner.model.CommonResponse
 import com.call2owner.model.ProductResponse
+import com.call2owner.network.Constant
 import com.call2owner.ui.BaseActivity
 import com.call2owner.ui.activity.auth.LoginActivity
 import com.call2owner.utils.MyUtil
@@ -84,6 +86,7 @@ class ProductDetailsActivity : BaseActivity() {
                                 finish()
                             }
                         }else{
+
                             val req=AddCartRequest(
                                 action = "checkout",
                                 cartID = userData.cartID,
@@ -123,11 +126,11 @@ class ProductDetailsActivity : BaseActivity() {
                     when (resp?.statusCode) {
                         200 -> {
                             toast("Added to Cart")
+                            Constant.buyed=true
                             finish()
                         }
                         302 -> {
                             toast(resp.message?:"Product Already in Cart")
-                            finish()
                         }
                         else -> {
                             showErrorSnackBar(resp?.message)

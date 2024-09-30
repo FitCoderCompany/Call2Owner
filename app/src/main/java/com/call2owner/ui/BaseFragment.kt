@@ -34,7 +34,6 @@ open class BaseFragment:Fragment(),NetworkInterface {
          ("Fragment ${javaClass.simpleName. getLastStringAfterDot()}").log()
     }
 
-
     fun showErrorSnackBar(msg: String, btnText: String, btnFun: () -> Unit) {
         requireContext().showSnackBar(requireActivity().window ,msg,btnText,btnFun)
     }

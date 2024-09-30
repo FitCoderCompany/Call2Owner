@@ -7,6 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.call2owner.R
 import com.call2owner.databinding.ActivityMainBinding
 import com.call2owner.model.TokenResponse
+import com.call2owner.network.Constant
 import com.call2owner.ui.BaseActivity
 import com.call2owner.utils.MyUtil.model
 
@@ -23,9 +24,11 @@ class MainActivity : BaseActivity() {
     }
 
 
-
-//    override fun onResult(type: String, success: Boolean, response: String) {
-//        when(type){  }
-//    }
-
+    override fun onResume() {
+        super.onResume()
+        if(Constant.buyed){
+            Constant.buyed=false
+            navController?.navigate(R.id.navigation_cart)
+        }
+    }
 }

@@ -188,7 +188,7 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/view_details"
+                        android:text="@string/buy_now"
                         android:textAllCaps="false"
                         android:textStyle="bold"
                         android:gravity="center"

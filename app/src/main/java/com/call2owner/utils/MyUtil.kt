@@ -33,6 +33,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target
 import com.call2owner.BuildConfig
 import com.call2owner.R
+import com.call2owner.custom.CustomTextView
 import com.call2owner.databinding.LayoutDialogBinding
 import com.call2owner.databinding.LayoutNoInternetBinding
 import com.call2owner.network.Constant
@@ -356,6 +357,17 @@ object MyUtil {
                 animate().scaleY(1f).setDuration(duration / 2).setListener(null)
             }
         })
+    }
+
+    fun validateAll(list: Array<CustomTextView>): Boolean {
+        var good=true
+        list.forEach {
+            if(it.isEmpty()){
+                it.setError()
+                good=false
+            }
+        }
+        return good
     }
 
 }

@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat
+import java.util.Locale
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -13,7 +16,6 @@ android {
         baseline = file("lint-baseline.xml")
     }
 
-
     bundle {
         language {
             enableSplit = false
@@ -27,14 +29,13 @@ android {
         applicationId = "com.call2owner"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 4
+        versionName = "1.04"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
         getByName("debug") {
-//            storeFile = file("D:\\FitCoder\\Wltpe-New\\info.jks")
              storeFile = file("/Users/mac/Desktop/Workspace/Wltpe/wltpe-info/wltpe.jks")
             storePassword = "wltpe78"
             keyPassword = "wltpe78"
@@ -65,12 +66,13 @@ android {
     }
 
 
-
     applicationVariants.all {
-        outputs.all {o->
-            project.ext.set("appName", "call2owner-app")
-            o.outputFile.name.replace("app-", "${project.ext["appName"]}-")
-            true
+        val variant = this
+        if (variant.buildType.name == "release") {
+            variant.outputs.all {
+                val output = this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
+                output.outputFileName = "Call2Owner-release.apk"
+            }
         }
     }
 
@@ -167,10 +169,10 @@ dependencies {
 //    Qr code
     implementation (libs.core)
     implementation (libs.zxing.android.embedded)
-
-    implementation("com.google.mlkit:barcode-scanning:17.0.2")
-    implementation("androidx.camera:camera-camera2:1.0.0")
-    implementation("androidx.camera:camera-lifecycle:1.0.0")
-    implementation("androidx.camera:camera-view:1.0.0-alpha22")
+    implementation(libs.app.update.ktx)
+    implementation(libs.barcode.scanning)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
 }
 

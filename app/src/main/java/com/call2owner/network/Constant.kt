@@ -2,7 +2,7 @@ package com.call2owner.network
 import com.call2owner.BuildConfig
 
 object Constant {
-
+    var buyed=false
     const val sharePrefName = "call2ownerAppData"
 
     const val securePrefName = "call2ownerUserData"

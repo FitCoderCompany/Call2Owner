@@ -2,15 +2,18 @@ package com.call2owner.network
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.call2owner.R
 import com.call2owner.databinding.LayoutLoadingBinding
+import com.call2owner.model.CommonResponse
 import com.call2owner.model.TokenResponse
 import com.call2owner.utils.UserData
 import com.call2owner.network.apis.MyApi
+import com.call2owner.ui.activity.auth.LoginActivity
 import com.call2owner.utils.AppData
 import com.call2owner.utils.MyUtil
 import com.call2owner.utils.MyUtil.hideKeyboard
@@ -55,12 +58,19 @@ class ApiManager @Inject constructor(@ActivityContext private val context: Conte
                     }
                     "Response Code for $type: $responseCode".log()
                     "Response Param for $type: $responseValue".log()
-                    listener.onResult(type,  responseCode==200, responseValue ?: errorMsg)
+                    if(responseCode==401){
+                        val o= Intent(context, LoginActivity::class.java)
+                        activity.startActivity(o)
+                        context.toast("You are login in another device")
+                        activity.finishAffinity()
+                    }else{
+                        listener.onResult(type,  responseCode==200, responseValue ?: "errorMsg")
+                    }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     hideLoader()
-                    t.localizedMessage?:"empty Message".log()
+                    (t.localizedMessage?:"empty Message").log()
                     listener.onResult(type,false,  t.localizedMessage ?: errorMsg)
                 }
             })
@@ -75,7 +85,6 @@ class ApiManager @Inject constructor(@ActivityContext private val context: Conte
             val type="tokenID"
             myApiService.getToken().enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-
                     hideLoader()
                     val responseCode=response.code()
                     val responseValue =if(responseCode==200){
@@ -85,8 +94,15 @@ class ApiManager @Inject constructor(@ActivityContext private val context: Conte
                     }
                     "Response Code for $type: $responseCode".log()
                     "Response Param for $type: $responseValue".log()
-                    listener.onResult(type,  responseCode==200, responseValue ?: "errorMsg")
 
+                    if(responseCode==401){
+                        val o= Intent(context, LoginActivity::class.java)
+                        activity.startActivity(o)
+                        context.toast("You are login in another device")
+                        activity.finishAffinity()
+                    }else{
+                        listener.onResult(type,  responseCode==200, responseValue ?: "errorMsg")
+                    }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {

@@ -30,19 +30,13 @@ import com.call2owner.utils.bannerSlider.ParallelXViewPagerTransformer
 import com.call2owner.utils.bannerSlider.SliderAdapterPager
 
 class HomeFragment : BaseFragment() {
-
     val productID="productID"
-    val productDetails="productDetails"
     val bannerID="bannerID"
 
     private var sliderAdapter: SliderAdapterPager?=null
-//    private val instructionImg = arrayListOf(
-//        "https://www.call2owner.com/assets/images/text-with-image.jpg",
-//        "https://www.call2owner.com/assets/images/step-2.jpeg",
-//        "https://www.call2owner.com/assets/images/bannermobilesize3.jpg"
-//    )
 
     private lateinit var binding: FragmentHomeBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         initView()
@@ -85,12 +79,7 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-
     private fun getAllData() {
-
-        if(appData.authToken.isEmpty()) {
-            apiManager.getToken(true,this )
-        }else {
             val banner=appData.bannerImages
             if(banner.isNotEmpty())
                 setBanners(banner)
@@ -99,9 +88,7 @@ class HomeFragment : BaseFragment() {
             val products = appData.productDetails
             if (products.isNotEmpty())
                 setProductData(products)
-
             apiManager.makeRequest(productID, products.isEmpty(), "", myApiService.product(CommonRequest(action = "product")), this)
-        }
     }
 
     private fun setBanners(response: String) {
@@ -122,7 +109,9 @@ class HomeFragment : BaseFragment() {
     private fun setProductData(data:String){
         val resp=data.model(ProductResponse::class.java)
         binding.productCard.visibility=View.VISIBLE
-        binding.qrImage.setImage(resp?.data?.image?.last()?:"")
+        if(resp?.data?.image?.isEmpty() != true){
+            binding.qrImage.setImage(resp?.data?.image?.last())
+        }
         binding.apply {
             resp?.data?.let {
                 productName.text=( it.productInfo?.proName?:"").capWord()
@@ -140,26 +129,9 @@ class HomeFragment : BaseFragment() {
         }
     }
 
+
     override fun onResult(type: String, success: Boolean, response: String) {
         when(type){
-            "tokenID"->{
-                try {
-                    if(success){
-                        val resp=response.model(TokenResponse::class.java)
-                        appData.authToken=resp?.auth?:""
-                        getAllData()
-                    }else{
-                        val resp=response.model(CommonResponse::class.java)
-                        showErrorSnackBar("Unable To Proceed With Token\nPlease Try Again After sometime: ${resp?.message}")
-                    }
-
-                }catch (e:Exception){
-                    e.log()
-                    showErrorSnackBar("Bad Json Format: ${e.message}")
-                }
-
-            }
-
             bannerID->{
                 if(success){
                     if(appData.bannerImages.isEmpty()){
@@ -183,13 +155,8 @@ class HomeFragment : BaseFragment() {
                 }
             }
 
-            productDetails->{
-
-            }
 
         }
-
-
     }
     override fun onDestroy() {
         super.onDestroy()

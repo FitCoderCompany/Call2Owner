@@ -24,5 +24,8 @@ data class CommonRequest(
     var mobile: String? = "",
     @SerializedName("enterotp")
     @Expose
-    var enteredOtp: String? = ""
+    var enteredOtp: String? = "",
+    @SerializedName("deviceKey")
+    @Expose
+    var deviceKey: String? = ""
 )

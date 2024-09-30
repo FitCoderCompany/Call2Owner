@@ -55,6 +55,7 @@ class OrderDetailsActivity : BaseActivity() {
         val data=resp?.orderList
         shipping = resp?.shippingInfo
         binding.apply {
+            name.sub=shipping?.customerName?:""
             number.sub=shipping?.mobile?:""
             email.sub=shipping?.eMail?:""
             status.sub=wholeData?.status?:""

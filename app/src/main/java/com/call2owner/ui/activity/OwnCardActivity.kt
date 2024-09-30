@@ -20,6 +20,7 @@ import com.call2owner.utils.MyUtil.explicitWeb
 import com.call2owner.utils.MyUtil.model
 
 class OwnCardActivity : BaseActivity() {
+
     private lateinit var binding:ActivityOwnCardBinding
     private val getOwnCardID="getOwnCardID"
     override fun onCreate(savedInstanceState: Bundle?) {

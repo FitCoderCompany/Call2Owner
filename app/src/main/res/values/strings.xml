@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Call 2 Owner</string>
+    <string name="app_name">Call2Owner</string>
     <string name="provider_name" translatable="false">.wltpe.Provider</string>
     <string name="fb_provider_name" translatable="false">com.facebook.app.FacebookContentProvider1208538897165737</string>
 
@@ -123,5 +123,8 @@
     <string name="submit">Submit</string>
     <string name="edit_msg">#NOTE: You can only edit linked Mobile Number and Email ID.</string>
     <string name="start_shipping">Start Shipping</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="log_out">Log Out</string>
+    <string name="something_went_wrong">Something went wrong</string>
 
 </resources>

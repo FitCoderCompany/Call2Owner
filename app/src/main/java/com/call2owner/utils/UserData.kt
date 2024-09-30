@@ -27,29 +27,13 @@ class UserData @Inject constructor(@ApplicationContext private val context: Cont
     }
 
 
-    var refreshToken: String?
-        get() {
-            return sp.getString("refreshToken", "") ?: ""
-        }
-        set(v) {
-            editor.putString("refreshToken", v ?: "").apply()
-        }
+    var deviceKey: String
+        get() = sp.getString("deviceKey", "") ?: ""
+        set(v) = editor.putString("deviceKey", v).apply()
 
-    var accessToken: String?
-        get() {
-            return sp.getString("accessToken", "") ?: ""
-        }
-        set(v) {
-            editor.putString("accessToken", v ?: "").apply()
-        }
-
-    var pwd: String
-        get() {
-            return sp.getString("appPwdSJ", "") ?: ""
-        }
-        set(v) {
-            editor.putString("appPwdSJ", v).apply()
-        }
+    var isProfileFetched: Boolean
+        get() = sp.getBoolean("isProfileFetched", false)
+        set(v) = editor.putBoolean("isProfileFetched", v).apply()
 
 
     var sessionID: String

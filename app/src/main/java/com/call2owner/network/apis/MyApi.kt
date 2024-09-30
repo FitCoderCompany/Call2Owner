@@ -6,6 +6,7 @@ import com.call2owner.model.CartEditRequest
 import com.call2owner.model.CartRequest
 import com.call2owner.model.CommonRequest
 import com.call2owner.model.EditCardRequest
+import com.call2owner.model.PaymentStatusRequest
 import com.call2owner.model.ShippingRequest
 import com.call2owner.model.UpdateProfileRequest
 import com.call2owner.network.Constant
@@ -50,6 +51,9 @@ interface MyApi {
 
     @POST(Constant.checkOut)
     fun shipping(@Body req: ShippingRequest): Call<ResponseBody>
+
+    @POST(Constant.checkOut)
+    fun paymentStatusRequest(@Body req: PaymentStatusRequest): Call<ResponseBody>
 
     @POST(Constant.cardApi)
     fun cardApi(@Body req: CardInfoRequest): Call<ResponseBody>

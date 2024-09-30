@@ -18,7 +18,7 @@ import javax.inject.Singleton
 class RetrofitModule {
 
     @Provides
-    fun provideOkHttpClient(  interceptor: TokenInterceptor): OkHttpClient {
+    fun provideOkHttpClient( interceptor: TokenInterceptor): OkHttpClient {
         return OkHttpClient
             .Builder()
             .connectTimeout(30, TimeUnit.SECONDS)

@@ -11,9 +11,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        android:translationZ="5dp"
-        app:cardCornerRadius="20dp"
         app:cardElevation="5dp">
 
         <androidx.core.widget.NestedScrollView
@@ -29,16 +26,6 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/back"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_back"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/title"
@@ -47,7 +34,7 @@
                         android:text="@string/profile"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/back"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -233,6 +220,43 @@
                     <androidx.cardview.widget.CardView
                         style="@style/myCardStyle"
                         android:layout_width="match_parent"
+                        android:id="@+id/logOutCard"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_logout" />
+
+                            <TextView
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/log_out" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/ic_forward"
+                                app:tint="@color/black" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        style="@style/myCardStyle"
+                        android:layout_width="match_parent"
                         android:id="@+id/contact"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp">
@@ -246,7 +270,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_contact"
-                                app:tint="@color/black" />
+                                app:tint="@color/colorPrimary" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -285,7 +309,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/faqs"
-                                app:tint="@color/black" />
+                                app:tint="@color/blue" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -326,7 +350,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_use"
-                                app:tint="@color/black" />
+                                app:tint="@color/red" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -366,7 +390,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_privacy"
-                                app:tint="@color/black" />
+                                app:tint="@color/blue" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -405,7 +429,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_terms"
-                                app:tint="@color/black" />
+                                app:tint="@color/grey" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -443,7 +467,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_terms"
-                                app:tint="@color/black" />
+                                app:tint="@color/grey" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -481,7 +505,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_terms"
-                                app:tint="@color/black" />
+                                app:tint="@color/grey" />
 
                             <TextView
                                 android:textColor="@color/black"
@@ -520,7 +544,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_about_us"
-                                app:tint="@color/black" />
+                                app:tint="@color/colorPrimaryDark" />
 
                             <TextView
                                 android:textColor="@color/black"
