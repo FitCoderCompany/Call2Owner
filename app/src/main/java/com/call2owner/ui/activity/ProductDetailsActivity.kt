@@ -131,6 +131,8 @@ class ProductDetailsActivity : BaseActivity() {
                         }
                         302 -> {
                             toast(resp.message?:"Product Already in Cart")
+                            Constant.buyed=true
+                            finish()
                         }
                         else -> {
                             showErrorSnackBar(resp?.message)
